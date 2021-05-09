@@ -1,9 +1,12 @@
 import React, { Component } from "react"
 
+
 class Card extends Component {
     render(){
         return(
-            <div>Card Component - Not yet used</div>
+            <img className="card" 
+                src={this.props.card.image} 
+                alt={this.props.card.name} />
         )
         
     }

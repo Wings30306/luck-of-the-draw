@@ -21,7 +21,7 @@ class CardDealer extends Component {
         // make request using deck
         try {
             let cardRes = await axios.get(`${API_URL}/${this.state.deck.deck_id}/draw/`)
-            if (cardRes.data.remaining === 0) {
+            if (cardRes.data.success === false) {
                 throw new Error("No cards remaining")
             }
             let card = cardRes.data.cards[0]
@@ -45,7 +45,8 @@ class CardDealer extends Component {
             <div>
             <h1>Card Dealer</h1>
             <button onClick={this.deal}>Deal me a card!</button>
-            <Card />
+            { this.state.drawn.map(card => <Card key={card.id} card={card} />)}
+            
         </div>
         )
         
